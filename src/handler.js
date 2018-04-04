@@ -4,6 +4,22 @@ var fs = require('fs');
 var queryString = require('querystring');
 const path=require('path');
 let reqPath=path.join(__dirname,'../');
+var fileData;
+
+
+
+fs.readFile(__dirname+'/Data/data.json','utf-8',function(error,file){
+if(error){
+console.log(error);
+return;
+}else {
+fileData=file;
+
+//console.log(file);
+
+}
+})
+
 
 // create function handller
 function handller(request,response){
@@ -19,21 +35,11 @@ return;
 }
 response.end(file);
 })
+
 }
 else if (endpoint=='/finding'){
 
 
-  fs.readFile(__dirname+'/Data/data.json','utf-8',function(error,file){
-  if(error){
-  console.log(error);
-  return;
-}else {
-
-  console.log(file);
-  response.end();
-
-}
-  })
 
 var allTheData='';
 request.on('data',function(chunkdata){
@@ -46,10 +52,16 @@ console.log(convertedData);
 response.writeHead(302,{
 'location':'/'
 })
+
+console.log(fileData);
 response.end();
 })
 
 }
+
+else if (endpoint=='/sugest/'){
+}
+
 }
 
 // module export

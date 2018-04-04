@@ -1,3 +1,11 @@
+console.log('dsds');
+document.getElementById('search').addEventListener('keydown', (event) => {
+const keyName = event.target.value;
+// alert(keyName.value);
+console.log(event.target.value);
+
+
+});
 // document.onreadystatechange = function () {
 //   if (document.readyState === 'complete') {
 //     var xhr = new XMLHttpRequest();
