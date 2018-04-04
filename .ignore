@@ -1,0 +1,5 @@
+https://en.wikipedia.org/w/api.php?action=query&titles=spider&prop=images&imlimit=20&format=jsonfm
+
+https://en.wikipedia.org/w/api.php?action=query&prop=info&pageids=28329803&inprop=url
+
+  https://www.w3schools.com/howto/howto_css_modals.asp
