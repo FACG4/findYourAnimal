@@ -1,37 +1,46 @@
-console.log('dsds');
-document.getElementById('search').addEventListener('keydown', (event) => {
-const keyName = event.target.value;
-// alert(keyName.value);
-console.log(event.target.value);
 
 
-});
-// document.onreadystatechange = function () {
-//   if (document.readyState === 'complete') {
-//     var xhr = new XMLHttpRequest();
-//     xhr.onreadystatechange = function() {
-//       if(xhr.readyState === 4){
-//         if (xhr.status === 200){
-//           var data = JSON.parse(xhr.responseText);
-//           for (var animal in data) {
-//             var postDiv         = document.createElement('div');
-//             var postText        = document.createElement('p');
-//
-//
-//
-//             postText.innerHTML = data[finding];
-//             postDiv.className = "post";
-//
-//             postDiv.appendChild(postText);
-//             postContainer.appendChild(postDiv);
-//           }
-//         }
-//         else {
-//           console.error(xhr.responseText);
-//         }
-//       }
-//     }
-//     xhr.open('GET', '/posts', true);
-//     xhr.send();
-//   }
-// }
+document.onreadystatechange = function () {
+    if (document.readyState === 'complete') {
+      var xhr = new XMLHttpRequest();
+      xhr.onreadystatechange = function() {
+        if(xhr.readyState === 4){
+          if (xhr.status === 200){
+            var data = JSON.parse(xhr.responseText); 
+            document.getElementById('search').addEventListener('keyup', (event) => {
+                var postContainer   = select('.reuslt');        
+                postContainer.innerHTML="";
+                const keyName = event.target.value;
+                function filterItems(query) {
+                    return data.filter(function(e) {
+                    return e.Name.toLowerCase().indexOf(query.toLowerCase()) !== -1;
+                });
+            }
+                Filterdata =filterItems(keyName)
+                console.log(Filterdata);
+
+                    for (var animal in Filterdata) {
+                        var postDiv         = document.createElement('p');
+                        var postImg         = document.createElement('img');
+
+                        postDiv.textContent = Filterdata[animal].Name;
+                        postImg.src=Filterdata[animal].ImageURL;
+                        postContainer.appendChild(postDiv);
+                        postDiv.appendChild(postImg);
+                    } 
+                
+                });
+          
+          }
+          else {
+            console.error(xhr.responseText);
+          }
+        }
+      }
+      xhr.open('POST', '/data', true);
+      xhr.send();
+    }
+  }
+
+
+

@@ -1,0 +1,12 @@
+img {
+    width: 100px;
+    width: 100px;
+}
+.reuslt{
+    width: 150px;
+    position: absolute;
+    -moz-box-shadow:    inset 0 0 10px #000000;
+   -webkit-box-shadow: inset 0 0 10px #000000;
+   box-shadow:         inset 0 0 10px #000000;
+   z-index: 99999999999999999999;
+}
