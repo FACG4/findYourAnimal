@@ -38,7 +38,9 @@ document.onreadystatechange = function() {
               element.addEventListener("click", function(e) {
 
                 console.log(e.target.id)
-                var url = "https://en.wikipedia.org/w/api.php?action=query&titles=" + e.target.id + "&images&imlimit=20&format=json";
+                var url = "https://cors-anywhere.herokuapp.com/https://en.wikipedia.org/w/api.php?action=query&titles=" + e.target.id + "&images&imlimit=20&format=json";
+
+
 
                 postContainer.classList.toggle("disable");
                 select(".search").value = "";
@@ -49,7 +51,7 @@ document.onreadystatechange = function() {
                   var obj = res.query.pages;
                   var x = obj[Object.keys(obj)[0]].pageid;
 
-                  var newUrl = 'https://en.wikipedia.org/w/api.php?action=query&prop=info&pageids=' + x + '&inprop=url&format=json';
+                  var newUrl = 'https://cors-anywhere.herokuapp.com/https://en.wikipedia.org/w/api.php?action=query&prop=info&pageids=' + x + '&inprop=url&format=json';
                   connect(newUrl, function(resp) {
                     var obj = resp.query.pages;
                     var fullPageSrc = obj[Object.keys(obj)[0]].fullurl;
