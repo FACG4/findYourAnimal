@@ -1,8 +1,10 @@
+var myModule = require('./handler');
 var http = require('http');
-//create server 
-var server= http.createServer();
 
-//listen to port 3000
-server.listen(3000,function(){
-    console.log('you site launch on http://lcoalhost:3000 ');
+var server = http.createServer(myModule);
+
+
+//localhost:3000
+server.listen(5000, function() {
+  console.log('now listening to port 5000');
 })

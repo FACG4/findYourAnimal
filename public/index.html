@@ -5,15 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Find Your Animal</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <head>
         <h1>Find your Animal</h1>
-        <form action="/finding" method="post">
+        <form action="/finding" method="post" id="form">
             <input list="animal" name="animal" type="text" class="search" id="search" placeholder="Enter Your Animal Name">
             <datalist id="animal" class="animal">
             </datalist>
+                  <button type="submit">Send</button>
         </form>
+        <div class="reuslt">
+            <iframe src="https://en.wikipedia.org/wiki/Animal" frameborder="0" width="900px" height="900px"></iframe>
+        </div>
+        <script src="./js/logic.js"></script>
+        <script src="./js/dom.js"></script>
+        <script src="script.js"></script>
+
     </head>
+    <script>
+
+    </script>
 </body>
 </html>
