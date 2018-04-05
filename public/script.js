@@ -6,9 +6,9 @@ document.onreadystatechange = function () {
       xhr.onreadystatechange = function() {
         if(xhr.readyState === 4){
           if (xhr.status === 200){
-            var data = JSON.parse(xhr.responseText); 
+            var data = JSON.parse(xhr.responseText);
             document.getElementById('search').addEventListener('keyup', (event) => {
-                var postContainer   = select('.reuslt');        
+                var postContainer   = select('.reuslt');
                 postContainer.innerHTML="";
                 const keyName = event.target.value;
                 function filterItems(query) {
@@ -27,10 +27,10 @@ document.onreadystatechange = function () {
                         postImg.src=Filterdata[animal].ImageURL;
                         postContainer.appendChild(postDiv);
                         postDiv.appendChild(postImg);
-                    } 
-                
+                    }
+
                 });
-          
+
           }
           else {
             console.error(xhr.responseText);
@@ -41,6 +41,3 @@ document.onreadystatechange = function () {
       xhr.send();
     }
   }
-
-
-
