@@ -22,8 +22,9 @@ fileData=file;
 // create function handller
 function handler(request,response){
 var endpoint=request.url;
-if(endpoint == '/'){
+console.log(endpoint);
 
+if(endpoint == '/'){
 response.writeHead(200,{'Content-Type':'text/html'})
 fs.readFile(reqPath+'/public/index.html',function(error,file){
 if(error){
@@ -68,7 +69,20 @@ response.end(file);
         }
         response.end(file);
         })
-}else if(endpoint == '/data'){
+}else if(endpoint == '/image/baa.jpg'){
+    response.writeHead(200,{'Content-Type':'image/jpeg'})
+        fs.readFile(reqPath+'/public/image/baa.jpg',function(error,file){
+        if(error){
+        console.log(error);
+        return;
+        }
+        response.end(file);
+        })
+}
+
+
+
+else if(endpoint == '/data'){
 //    var json = JSON.stringify({data: fileData});
    response.end(fileData);
 }
