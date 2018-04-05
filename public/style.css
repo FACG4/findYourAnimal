@@ -3,6 +3,8 @@ img {
   width: 100px;
 }
 
+
+
 .reuslt {
   width: 69%;
   background: #fff;
@@ -160,11 +162,41 @@ input[type=text]:focus {
     width: 70%;
   }
 }
+
+
+
+@media all and (max-width: 980px) {
+  .reuslt {
+      left: 150px;
+    }
+}
+@media all and (max-width: 736px) {
+  .result{
+
+    width: 68%;
+    left: 114px!important;
+  }
+ }
+@media all and (max-width: 480px) {
+.result {
+  width: 67%;
+left: 78px!important;
+}
+ }
+
+ @media all and (max-width: 280px) {
+ .result {
+   width: 67%;
+ left: 20px!important;
+ }
+  }
+
+
 @media screen and (max-width: 360px) {
 
-.reuslt {
-    width: 80%;
-    left: 35px;
+.result{
+  width: 86%;
+left: 25px!important
 }
 
 input[type=text]:focus {
