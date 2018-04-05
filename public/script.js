@@ -6,6 +6,7 @@ document.onreadystatechange = function() {
         if (xhr.status === 200) {
           var data = JSON.parse(xhr.responseText);
           document.getElementById('search').addEventListener('keyup', (event) => {
+
             var postContainer = select('.reuslt');
             postContainer.innerHTML = "";
             const keyName = event.target.value;
@@ -26,7 +27,7 @@ document.onreadystatechange = function() {
               postDiv.textContent = Filterdata[animal].Name;
 
               postDiv.setAttribute("id", postDiv.textContent);
-              postDiv.setAttribute("href", '#');
+              postDiv.setAttribute("href", '#popup1');
 
               postDiv.value = Filterdata[animal].Name;
 
@@ -35,9 +36,12 @@ document.onreadystatechange = function() {
               postDiv.appendChild(postImg);
               const element = document.getElementById(postDiv.id);
               element.addEventListener("click", function(e) {
+
                 console.log(e.target.id)
                 var url = "https://en.wikipedia.org/w/api.php?action=query&titles=" + e.target.id + "&images&imlimit=20&format=json";
-                // console.log(url);
+
+                postContainer.classList.toggle("disable");
+                select(".search").value = "";
 
 
 
@@ -46,15 +50,19 @@ document.onreadystatechange = function() {
                   var x = obj[Object.keys(obj)[0]].pageid;
 
                   var newUrl = 'https://en.wikipedia.org/w/api.php?action=query&prop=info&pageids=' + x + '&inprop=url&format=json';
-                  //  console.log(x);
                   connect(newUrl, function(resp) {
                     var obj = resp.query.pages;
                     var fullPageSrc = obj[Object.keys(obj)[0]].fullurl;
                     var iframe = create('iframe');
-                    select('.reuslt').appendChild(iframe).src = fullPageSrc;
+                    select('.content').appendChild(iframe).src = fullPageSrc;
+                    iframe.setAttribute("id", "iframe");
+                    iframe.setAttribute("name", "iframe");
+                    iframe.setAttribute("frameborder", "0");
+                    iframe.setAttribute("width", "100%");
+                    iframe.setAttribute("height", "480px");
 
-                    // var innerDoc = iframe.contentDocument || iframe.contentWindow.document.getElementById('firstHeading');
-                    // innerDoc.body.style.backgroundColor = "red";
+
+
 
                   });
                 }
@@ -63,6 +71,8 @@ document.onreadystatechange = function() {
 
               });
             }
+            postContainer.classList.remove("disable");
+
 
           });
 

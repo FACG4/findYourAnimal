@@ -1,6 +1,4 @@
-// requier fs module
 var fs = require('fs');
-// requier querystring module
 var queryString = require('querystring');
 const path = require('path');
 let reqPath = path.join(__dirname, '../');
@@ -19,11 +17,13 @@ fs.readFile(__dirname + '/Data/data.json', 'utf-8', function(error, file) {
 })
 
 
-// create function handller
+
 function handler(request, response) {
   var endpoint = request.url;
-  if (endpoint == '/') {
 
+  console.log(endpoint);
+
+  if (endpoint == '/') {
     response.writeHead(200, {
       'Content-Type': 'text/html'
     })
@@ -78,9 +78,30 @@ function handler(request, response) {
       }
       response.end(file);
     })
+  } else if (endpoint == '/image/baa.jpg') {
+    response.writeHead(200, {
+      'Content-Type': 'image/jpeg'
+    })
+    fs.readFile(reqPath + '/public/image/baa.jpg', function(error, file) {
+      if (error) {
+        console.log(error);
+        return;
+      }
+      response.end(file);
+    })
   } else if (endpoint == '/data') {
-    //    var json = JSON.stringify({data: fileData});
     response.end(fileData);
+  } else if (endpoint == '/image/icon.png') {
+    response.writeHead(200, {
+      'Content-Type': 'image/png'
+    })
+    fs.readFile(reqPath + '/public/image/icon.png', function(error, file) {
+      if (error) {
+        console.log(error);
+        return;
+      }
+      response.end(file);
+    })
   }
 
 }
