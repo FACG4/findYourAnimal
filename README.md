@@ -56,8 +56,8 @@ Our website that give you ability to enter your animal name in the search text i
 
       Run  `node src/server.js `
 
-Navigate to http://localhost:5000/ in your browser
+Navigate to http://localhost:9000/ in your browser
 
-[check the site]()
+[check the site](https://w4-animals.herokuapp.com/#)
 
 >Done By : Inass,Ishak,Abdallah,Eman.
