@@ -5,6 +5,9 @@ document.onreadystatechange = function() {
       if (xhr.readyState === 4) {
         if (xhr.status === 200) {
           var data = JSON.parse(xhr.responseText);
+
+
+
           document.getElementById('search').addEventListener('keyup', (event) => {
 
             var postContainer = select('.reuslt');
@@ -51,18 +54,27 @@ document.onreadystatechange = function() {
                   var obj = res.query.pages;
                   var x = obj[Object.keys(obj)[0]].pageid;
 
-                  var newUrl = 'https://cors-anywhere.herokuapp.com/https://en.wikipedia.org/w/api.php?action=query&prop=info&pageids=' + x + '&inprop=url&format=json';
+                  var newUrl = "https://cors-anywhere.herokuapp.com/https://en.wikipedia.org/w/api.php?action=query&prop=info&pageids=" + x + "&inprop=url&format=json";
+                  console.log(newUrl);
                   connect(newUrl, function(resp) {
                     var obj = resp.query.pages;
                     var fullPageSrc = obj[Object.keys(obj)[0]].fullurl;
                     var iframe = create('iframe');
-                    select('.content').appendChild(iframe).src = fullPageSrc;
+
+
+
+
                     iframe.setAttribute("id", "iframe");
+
                     iframe.setAttribute("name", "iframe");
                     iframe.setAttribute("frameborder", "0");
                     iframe.setAttribute("width", "100%");
                     iframe.setAttribute("height", "480px");
 
+
+                                        select('.content').appendChild(iframe);
+
+                    iframe.setAttribute("src",select('.content').appendChild(iframe).src=fullPageSrc);
 
 
 
